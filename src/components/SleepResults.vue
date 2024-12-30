@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="text-center space-y-2">
-      <h1 class="text-3xl font-bold">Results</h1>
-      <h2 class="text-lg font-medium opacity-50">Your time is saved</h2>
+      <h1 class="text-3xl font-bold text-primary-300">Results</h1>
+      <h2 class="text-lg font-medium text-white">Your time is saved</h2>
     </div>
     <div class="flex flex-col items-center justify-center gap-4">
       <div>
@@ -10,7 +10,7 @@
       </div>
       <div>
         <button @click="reset"
-          class="rounded-full p-2 px-6 bg-yellow-500 text-indigo-950 font-medium transition-transform transform hover:bg-yellow-600 active:scale-95">
+          class="rounded-xl p-2 px-10 bg-primary-300 text-primary-950 font-medium transition-transform transform hover:bg-opacity-90 active:scale-95">
           Calculate Again
         </button>
       </div>
@@ -23,7 +23,7 @@ import { store } from '../store.js'
 import { is12HourFormat } from '../utils.js'
 
 function reset() {
-  store.time = 0;
+  store.setTime(0);
 }
 
 export default {

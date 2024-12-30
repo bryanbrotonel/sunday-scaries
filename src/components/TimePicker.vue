@@ -1,5 +1,6 @@
 <template>
-  <div class="rounded-2xl border-yellow-500 border-4 bg-indigo-700 text-white">
+  <div
+    class="rounded-2xl border-primary-300 border-4 bg-primary-900 text-white px-8">
     <div class="overflow-hidden">
       <swiper v-for="(items, index) in swipers" :key="index"
         :slides-per-view="3" :direction="'vertical'" :centered-slides="true"
@@ -7,7 +8,7 @@
         :loop="items.loop" class="w-20 h-40 float-left"
         @slideChange="onSlideChange(index, $event)">
         <swiper-slide v-for="(item, index) in items.list" :key="index"
-          class="flex justify-center items-center text-center text-2xl select-none opacity-25 transition-opacity duration-300 ease cursor-default font-bold tap-highlight-transparent h-full">
+          class="flex justify-center items-center text-center text-2xl select-none text-primary-400 transition-opacity duration-300 ease cursor-default font-bold tap-highlight-transparent h-full">
           <div class="h-full flex items-center justify-center">
             <span>{{ item }}</span>
           </div>
@@ -60,13 +61,14 @@ export default {
     onSlideChange(swiperIndex, event) {
       switch (swiperIndex) {
         case 0:
-          store.timePicker.hour = is12HourFormat() ? event.realIndex + 1 : event.realIndex;
+          store.setHour(is12HourFormat() ? event.realIndex + 1 : event.realIndex);
           break;
         case 1:
           store.timePicker.minute = event.realIndex;
+          store.setMinute(event.realIndex);
           break;
         case 2:
-          store.timePicker.median = event.realIndex === 0 ? 'AM' : 'PM';
+          store.setMedian(event.realIndex === 0 ? 'AM' : 'PM');
           break;
       }
     },
@@ -77,6 +79,6 @@ export default {
 <style scoped>
 /* Add your styles here */
 .swiper-slide-active {
-  @apply opacity-100;
+  @apply text-white;
 }
 </style>

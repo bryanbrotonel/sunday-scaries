@@ -1,14 +1,14 @@
 <template>
   <div class="space-y-10">
     <div class="text-center space-y-2">
-      <h1 class="text-3xl font-bold">{{ title }}</h1>
-      <h2 class="text-lg font-medium opacity-50">{{ subtitle }}</h2>
+      <h1 class="text-3xl font-bold text-primary-300">{{ title }}</h1>
+      <h2 class="text-lg font-medium text-white">{{ subtitle }}</h2>
     </div>
     <div class="flex flex-col items-center justify-center gap-4">
       <TimePicker />
       <div>
         <button @click="saveChanges()"
-          class="rounded-full p-2 px-6 bg-yellow-500 text-indigo-950 font-medium transition-transform transform hover:bg-yellow-600 active:scale-95">
+          class="rounded-xl p-2 px-10 bg-primary-300 text-primary-950 font-medium transition-transform transform hover:bg-opacity-90 active:scale-95">
           Save Changes
         </button>
       </div>
@@ -16,7 +16,7 @@
     <div class="flex flex-col items-center justify-center gap-4">
       <h1 class="text-lg font-medium">If you went to bed now...</h1>
       <button @click="saveChanges(true)"
-        class="rounded-full p-2 px-6 bg-yellow-500 text-indigo-950 font-medium transition-transform transform hover:bg-yellow-600 active:scale-95">
+        class="rounded-xl p-2 px-10 bg-primary-300 text-primary-950 font-medium transition-transform transform hover:bg-opacity-90 active:scale-95">
         Good luck
       </button>
     </div>
