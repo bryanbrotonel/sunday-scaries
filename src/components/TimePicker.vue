@@ -8,7 +8,7 @@
         :loop="items.loop" class="w-20 h-40 float-left"
         @slideChange="onSlideChange(index, $event)">
         <swiper-slide v-for="(item, index) in items.list" :key="index"
-          class="flex justify-center items-center text-center text-2xl select-none text-primary-400 transition-opacity duration-300 ease cursor-default font-bold tap-highlight-transparent h-full">
+          class="flex justify-center items-center text-center text-2xl select-none text-primary-400 transition-opacity duration-300 ease cursor-default font-bold tap-highlight-transparent h-full hover:cursor-ns-resize">
           <div class="h-full flex items-center justify-center">
             <span>{{ item }}</span>
           </div>

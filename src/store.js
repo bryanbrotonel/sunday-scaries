@@ -2,13 +2,15 @@ import { reactive } from 'vue';
 
 const currentTime = new Date();
 const currentHour = currentTime.getHours();
-console.log('🚀 ~ currentHour:', currentHour)
 const currentMinute = currentTime.getMinutes();
 const is12HourFormat = currentHour >= 12 ? 'PM' : 'AM';
 const hourIn12Format = currentHour % 12 || 12;
-console.log('🚀 ~ hourIn12Format:', hourIn12Format)
 
 export const store = reactive({
+  currentPage: 'calculator',
+  setCurrentPage(page) {
+    this.currentPage = page;
+  },
   time: 0,
   setTime(time) {
     this.time = time;
