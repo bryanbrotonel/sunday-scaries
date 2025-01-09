@@ -13,14 +13,14 @@
 import { store } from './store.js';
 import SleepHeader from './components/SleepHeader.vue';
 import SleepCalculator from './components/SleepCalculator.vue'
-import SleepResults from './components/SleepResults.vue'
+import SleepResults from './components/SleepResults/SleepResults.vue'
 
 export default {
   name: 'App',
   components: {
     SleepHeader,
     SleepCalculator,
-    SleepResults
+    SleepResults,
   },
   data() {
     return {

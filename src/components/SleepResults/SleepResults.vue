@@ -9,6 +9,13 @@
         <p class="text-2xl font-bold">{{ formattedTime }}</p>
       </div>
       <div>
+        <div class="space-y-4">
+          <template v-for="(result, index) in sleepTimes" :key="index">
+            <SleepTime :time="result.time" :cycles="result.cycles" :hours="result.duration / 60" />
+          </template>
+        </div>
+      </div>
+      <div>
         <button @click="reset"
           class="rounded-xl p-2 px-8 bg-primary-300 text-primary-950 font-medium transition-transform transform hover:bg-opacity-90 active:scale-95">
           Calculate Again
@@ -19,8 +26,9 @@
 </template>
 
 <script>
-import { store } from '../store.js'
-import { is12HourFormat } from '../utils.js'
+import { store } from '../../store.js'
+import SleepTime from './SleepTime.vue'
+import { formatTime, calculateOptimalSleepTimes } from '../../utils.js'
 
 function reset() {
   store.setTime(0);
@@ -32,17 +40,24 @@ export default {
   props: {
     time: Number,
   },
+  components: {
+    SleepTime,
+  },
   computed: {
     formattedTime() {
-      return new Date(store.time).toLocaleTimeString('en-US', {
-        hour: 'numeric',
-        minute: 'numeric',
-        hour12: is12HourFormat(),
-      });
+      return formatTime(store.time);
     },
   },
   methods: {
     reset,
+    formatTime,
+    calculateOptimalSleepTimes,
   },
+  data() {
+    return {
+      store,
+      sleepTimes: calculateOptimalSleepTimes(store.time),
+    }
+  }
 }
 </script>
