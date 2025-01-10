@@ -6,7 +6,7 @@
       <div>
         <button @click="saveChanges()"
           class="rounded-xl p-2 px-8 bg-primary-300 text-primary-950 font-medium transition-transform transform hover:bg-opacity-90 active:scale-95">
-          Save Changes &#x1F64F;
+          Calculate &#x1F64F;
         </button>
       </div>
     </div>

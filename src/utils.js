@@ -17,7 +17,7 @@ export const formatTime = (time) =>
 
 export const millisecondsToMinutes = (ms) => Math.floor(ms / 60000);
 
-export function calculateOptimalSleepTimes(time) {
+export function calculateOptimalSleepTimes(wakeUpTime) {
   const sleepCycleMinutes = 90;
   const minimumSleepTime = 3 * 60; // 3 hours in minutes
   const cycles = 4; // Number of sleep cycles to calculate
@@ -25,9 +25,9 @@ export function calculateOptimalSleepTimes(time) {
 
   for (let i = 1; i <= cycles; i++) {
     const totalMinutes = i * sleepCycleMinutes + minimumSleepTime;
-    const sleepTime = new Date(time);
+    const sleepTime = new Date(wakeUpTime);
 
-    sleepTime.setMinutes(sleepTime.getMinutes() + totalMinutes);
+    sleepTime.setMinutes(sleepTime.getMinutes() - totalMinutes);
     results.push({
       time: sleepTime.getTime(),
       cycles: totalMinutes / sleepCycleMinutes,
@@ -35,5 +35,5 @@ export function calculateOptimalSleepTimes(time) {
     });
   }
 
-  return results;
+  return results.reverse();
 }
