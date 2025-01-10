@@ -1,8 +1,11 @@
 import { reactive } from 'vue';
 
-const currentTime = new Date();
-const currentHour = currentTime.getHours();
-const currentMinute = currentTime.getMinutes();
+const defaultTime = new Date();
+defaultTime.setDate(defaultTime.getDate() + 1);
+defaultTime.setHours(7);
+defaultTime.setMinutes(30);
+const currentHour = defaultTime.getHours();
+const currentMinute = defaultTime.getMinutes();
 const is12HourFormat = currentHour >= 12 ? 'PM' : 'AM';
 const hourIn12Format = currentHour % 12 || 12;
 
