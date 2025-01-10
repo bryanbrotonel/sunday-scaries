@@ -18,6 +18,10 @@ export const store = reactive({
   setTime(time) {
     this.time = time;
   },
+  resultType: 'bedtime',
+  setResultType(type) {
+    this.resultType = type;
+  },
   timePicker: {
     hour: hourIn12Format,
     minute: currentMinute,

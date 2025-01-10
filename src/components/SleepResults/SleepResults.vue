@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-6">
     <div class="text-center space-y-1">
-      <h1 class="text-2xl font-bold text-primary-300">Fall asleep at...</h1>
+      <h1 class="text-2xl font-bold text-primary-300">{{ resultTitle }}</h1>
       <p>
         Remember, the average human takes around 15 minutes to fall asleep, so
         please plan accordingly. You will thank me later.
@@ -12,16 +12,14 @@
       <span>&#x1F551; Hours of Sleep</span>
     </div>
     <div class="flex flex-col items-center justify-center gap-4">
-      <div>
-        <div class="space-y-4">
-          <template v-for="(result, index) in sleepTimes" :key="index">
-            <SleepTime
-              :time="result.time"
-              :cycles="result.cycles"
-              :hours="result.duration / 60"
-            />
-          </template>
-        </div>
+      <div class="space-y-4">
+        <template v-for="(result, index) in sleepTimes" :key="index">
+          <SleepTime
+            :time="result.time"
+            :cycles="result.cycles"
+            :hours="result.duration / 60"
+          />
+        </template>
       </div>
     </div>
     <div class="text-center">
@@ -41,7 +39,11 @@
 <script>
 import { store } from '../../store.js';
 import SleepTime from './SleepTime.vue';
-import { formatTime, calculateOptimalSleepTimes } from '../../utils.js';
+import {
+  formatTime,
+  calculateOptimalSleepTimes,
+  calculateWakeUpTimes,
+} from '../../utils.js';
 
 function reset() {
   store.setTime(0);
@@ -64,7 +66,11 @@ export default {
   data() {
     return {
       store,
-      sleepTimes: calculateOptimalSleepTimes(store.time),
+      sleepTimes:
+        store.resultType === 'bedtime'
+          ? calculateOptimalSleepTimes(store.time)
+          : calculateWakeUpTimes(store.time),
+      resultTitle: store.resultType === 'bedtime' ? 'Bedtime' : 'Wake-up Time',
     };
   },
 };

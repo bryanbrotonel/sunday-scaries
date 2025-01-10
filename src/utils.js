@@ -17,23 +17,63 @@ export const formatTime = (time) =>
 
 export const millisecondsToMinutes = (ms) => Math.floor(ms / 60000);
 
-export function calculateOptimalSleepTimes(wakeUpTime) {
+function calculateSleepTimes(baseTime, isWakeUp) {
   const sleepCycleMinutes = 90;
   const minimumSleepTime = 3 * 60; // 3 hours in minutes
   const cycles = 4; // Number of sleep cycles to calculate
   const results = [];
 
   for (let i = 1; i <= cycles; i++) {
-    const totalMinutes = i * sleepCycleMinutes + minimumSleepTime;
-    const sleepTime = new Date(wakeUpTime);
+    const totalMinutes = i * sleepCycleMinutes + minimumSleepTime + 15; // add 15 minutes to fall asleep
+    const time = new Date(baseTime);
 
-    sleepTime.setMinutes(sleepTime.getMinutes() - totalMinutes);
+    const adjustment = isWakeUp ? totalMinutes : -totalMinutes;
+    time.setMinutes(time.getMinutes() + adjustment);
+
     results.push({
-      time: sleepTime.getTime(),
-      cycles: totalMinutes / sleepCycleMinutes,
+      time: time.getTime(),
+      cycles: i,
       duration: totalMinutes,
     });
   }
 
   return results.reverse();
+}
+
+export function calculateOptimalSleepTimes(wakeUpTime) {
+  return calculateSleepTimes(wakeUpTime, false);
+}
+
+export function calculateWakeUpTimes(sleepTime) {
+  return calculateSleepTimes(sleepTime, true);
+}
+
+async function fetchSleepMessages() {
+  const response = await fetch('data/sleepMessages.json');
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  const messages = await response.json();
+  return messages;
+}
+
+function getRandomMessage(messages) {
+  const randomIndex = Math.floor(Math.random() * messages.length);
+  return messages[randomIndex];
+}
+
+export async function getSleepMessage(hours) {
+  const messages = await fetchSleepMessages();
+
+  if (hours >= 9) {
+    return getRandomMessage(messages.ninePlus);
+  } else if (hours >= 7 && hours < 9) {
+    return getRandomMessage(messages.sevenToNine);
+  } else if (hours >= 5 && hours < 7) {
+    return getRandomMessage(messages.fiveToSeven);
+  } else if (hours >= 0 && hours < 5) {
+    return getRandomMessage(messages.zeroToFive);
+  } else {
+    return '';
+  }
 }

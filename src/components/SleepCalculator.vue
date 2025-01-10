@@ -35,11 +35,11 @@ export default {
     }
   },
   methods: {
-    saveChanges(current = false) {
+    saveChanges(currentTime = false) {
       const { hour, minute, median } = this.timePicker;
       let dateToSave = new Date();
 
-      if (!current) {
+      if (!currentTime) {
         const currentDate = new Date();
         dateToSave = new Date(
           currentDate.getFullYear(),
@@ -50,6 +50,7 @@ export default {
         );
       }
 
+      store.setResultType(currentTime ? 'wakeuptime' : 'bedtime');
       store.setTime(dateToSave.valueOf())
       store.setCurrentPage('results');
     }
