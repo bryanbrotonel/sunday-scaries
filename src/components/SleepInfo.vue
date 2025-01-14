@@ -1,25 +1,25 @@
 <template>
-  <div class="space-y-4">
+  <div class="space-y-4 text-sm md:text-base">
     <div>
-      <h6 class="text-primary-300 mb-1">Does this even work? &#x1F9D0;</h6>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore earum
-        consectetur eum molestias sunt culpa aliquid mollitia nostrum maxime
-        corrupti? Provident est consectetur odit mollitia hic eaque cum soluta
-        expedita.</p>
+      <h6 class="text-primary-300 mb-1">Does this even work? &#x1F937;</h6>
+      <p>
+      Maybe? Who knows. I mean it&rsquo;s not like I slapped together random
+      numbers and called it a day. But hey, if you want to keep binge-watching
+      until 3 AM and expect miracles, go ahead.
+      </p>
     </div>
     <div>
-      <h6 class="text-primary-300 mb-1">Can I trust you? &#x1F91D;</h6>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In laborum
-        dicta odit fugit necessitatibus, deserunt quasi rerum magni quia
-        beatae enim perspiciatis eius qui laudantium nobis eaque facere
-        aliquid cum?</p>
+      <h6 class="text-primary-300 mb-1">How can I trust this? &#x1F914;</h6>
+      <p>
+      Trust issues with a calculator? Maybe focus on that before tackling your
+      circadian rhythm, champ.
+      </p>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'SleepInfo',
-}
+};
 </script>

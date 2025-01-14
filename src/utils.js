@@ -24,7 +24,8 @@ function calculateSleepTimes(baseTime, isWakeUp) {
   const results = [];
 
   for (let i = 1; i <= cycles; i++) {
-    const totalMinutes = i * sleepCycleMinutes + minimumSleepTime + 15; // add 15 minutes to fall asleep
+    const sleepLength = i * sleepCycleMinutes + minimumSleepTime;
+    const totalMinutes = sleepLength + 15; // add 15 minutes to fall asleep
     const time = new Date(baseTime);
 
     const adjustment = isWakeUp ? totalMinutes : -totalMinutes;
@@ -32,8 +33,8 @@ function calculateSleepTimes(baseTime, isWakeUp) {
 
     results.push({
       time: time.getTime(),
-      cycles: i,
-      duration: totalMinutes,
+      cycles: sleepLength / sleepCycleMinutes,
+      duration: sleepLength,
     });
   }
 
@@ -48,31 +49,40 @@ export function calculateWakeUpTimes(sleepTime) {
   return calculateSleepTimes(sleepTime, true);
 }
 
-async function fetchSleepMessages() {
-  const response = await fetch('data/sleepMessages.json');
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-  const messages = await response.json();
-  return messages;
-}
+const sleepMessages = {
+  ninePlus: ['Grandma, is that you? &#x1F475;', 'Wow look at me, so responsible. &#x1F644;', 'Born to sleep, forced to wake up. &#x1F614;'],
+  sevenToNine: [
+    'You wish you could sleep in more, huh? &#x1F602;	',
+    'Almost a full night\'s sleep! &#x1F609;',
+    'So awake, yet so tired. &#x1F62B;',
+  ],
+  fiveToSeven: [
+    'Good job, you\'re almost getting enough sleep. &#x1F44F;',
+    'Congrats, you\'ve achieved the bare minimum of rest. &#x1F948;',
+    'You\'re functioning, but at what cost? &#x1F972;',
+  ],
+  zeroToFive: [
+    'Might as well start getting dressed. &#x1F480;',
+    'Do you even need to sleep at this point? &#x1F643;',
+    'Sleep is overrated anyway, right? Oh, wait, you wouldn\'t know. &#x1F636;',
+  ],
+};
+
 
 function getRandomMessage(messages) {
   const randomIndex = Math.floor(Math.random() * messages.length);
   return messages[randomIndex];
 }
 
-export async function getSleepMessage(hours) {
-  const messages = await fetchSleepMessages();
-
+export function getSleepMessage(hours) {
   if (hours >= 9) {
-    return getRandomMessage(messages.ninePlus);
+    return getRandomMessage(sleepMessages.ninePlus);
   } else if (hours >= 7 && hours < 9) {
-    return getRandomMessage(messages.sevenToNine);
+    return getRandomMessage(sleepMessages.sevenToNine);
   } else if (hours >= 5 && hours < 7) {
-    return getRandomMessage(messages.fiveToSeven);
+    return getRandomMessage(sleepMessages.fiveToSeven);
   } else if (hours >= 0 && hours < 5) {
-    return getRandomMessage(messages.zeroToFive);
+    return getRandomMessage(sleepMessages.zeroToFive);
   } else {
     return '';
   }
