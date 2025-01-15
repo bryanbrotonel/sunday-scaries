@@ -1,17 +1,17 @@
 <template>
   <div class="flex flex-col min-h-screen">
     <div
-      class="flex flex-grow flex-col md:flex-row gap-10 md:justify-center p-4 sm:p-0 sm:mt-32"
+      class="flex flex-grow flex-col mx-auto lg:mx-0 lg:flex-row gap-5 lg:justify-center p-4 lg:p-0 lg:mt-32"
     >
-      <div class="hidden sm:block md:mb-auto sticky max-w-md top-0 space-y-8 md:top-32">
+      <div class="hidden lg:block xl:mb-auto sticky max-w-lg top-0 space-y-8 lg:top-32">
         <SleepHeader />
         <SleepInfo />
       </div>
-      <div class="sm:hidden">
+      <div class="lg:hidden">
         <SleepHeader />
       </div>
-      <div class="flex-grow md:w-1/2 md:max-w-lg">
-        <main class="container mx-auto px-4 md:px-0">
+      <div class="flex-grow lg:w-1/2 lg:max-w-lg">
+        <main class="container mx-auto px-4 lg:px-0">
           <SleepCalculator
             subtitle="A procrastinator&rsquo;s sleep calculator"
             v-if="store.currentPage === 'calculator'"
@@ -19,7 +19,7 @@
           <SleepResults v-if="store.currentPage === 'results'" />
         </main>
       </div>
-      <div class="sm:hidden">
+      <div class="lg:hidden max-w-96">
         <SleepInfo />
       </div>
     </div>
