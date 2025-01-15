@@ -5,7 +5,7 @@
       <TimePicker />
       <div>
         <button @click="saveChanges()"
-          class="rounded-xl p-2 px-8 bg-primary-300 text-primary-950 font-medium transition-transform transform hover:bg-opacity-90 active:scale-95">
+          class="rounded-xl p-2 px-8 bg-primary-300 text-primary-950 font-medium transition-transform transform hover:bg-opacity-80 active:scale-95">
           Calculate &#x1F64F;
         </button>
       </div>
@@ -13,7 +13,7 @@
     <div class="flex flex-col items-center justify-center gap-4">
       <h2 lass="font-bold">If you went to bed now...</h2>
       <button @click="saveChanges(true)"
-        class="rounded-xl p-2 px-8 bg-primary-300 text-primary-950 font-medium transition-transform transform hover:bg-opacity-90 active:scale-95">
+        class="rounded-xl p-2 px-8 bg-primary-300 text-primary-950 font-medium transition-transform transform hover:bg-opacity-80 active:scale-95">
         Good luck &#x1F340;
       </button>
     </div>

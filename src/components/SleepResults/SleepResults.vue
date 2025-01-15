@@ -2,23 +2,23 @@
   <div class="space-y-8">
     <div class="text-center space-y-2">
       <h1 class="text-3xl font-bold text-primary-300">{{ resultTitle }}</h1>
-      <h2 class="text-lg whitespace-nowrap">
+      <h2 class="text-lg">
         {{
-          store.resultType === 'bedtime' ? 'To wake up' : 'If you fall asleep'
+          store.resultType === 'bedtime' ? 'To wake up' : 'If you went to bed'
         }}
         at
         <span class="text-yellow-400 font-bold">{{
           formatTime(store.time)
         }}</span
-        >{{
-          store.resultType === 'bedtime' ? ', fall asleep' : ', wake up'
-        }}
+        >{{ store.resultType === 'bedtime' ? ', fall asleep' : ', wake up' }}
         at...
       </h2>
-      <p class="text-sm text-white/80">
-        Remember, the average human takes around 15 minutes to fall
-        asleep, so please plan accordingly. You will thank me later.
-      </p>
+      <div class="max-w-96 mx-auto">
+        <p class="text-sm text-white/80">
+          Remember, the average human takes around 15 minutes to fall asleep, so
+          please plan accordingly. You will thank me later.
+        </p>
+      </div>
     </div>
     <div class="flex justify-center gap-6 text-primary-300 font-medium text-sm">
       <span>&#x1F504; Sleep Cycles</span>
@@ -27,8 +27,8 @@
     <div class="flex flex-col items-center justify-center gap-6">
       <div class="space-y-6">
         <template v-for="(result, index) in sleepTimes" :key="index">
-            <!-- Hours: seconds in minutes / 60 -->
-            <SleepTime
+          <!-- Hours: seconds in minutes / 60 -->
+          <SleepTime
             :time="result.time"
             :cycles="result.cycles"
             :hours="result.duration / 60"

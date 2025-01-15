@@ -1,5 +1,5 @@
 <template>
-  <div class="border-2 border-white/40 bg-black/5 p-4 rounded-xl space-y-3">
+  <div class="border-2 border-white/30 bg-black/5 p-4 rounded-xl space-y-3 max-w-80">
     <div class="flex align-center gap-2">
       <h1 class="font-bold text-2xl text-amber-300">{{ formatTime(time) }}</h1>
       <div class="space-x-2 flex items-center text-sm">

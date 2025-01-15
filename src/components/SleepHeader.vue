@@ -23,9 +23,9 @@
         Sunday Scaries
       </h1>
     </div>
-    <h2 class="font-semibold text-lg text-white">
+    <h6 class="font-semibold text-lg text-white">
       A procrastinator&rsquo;s sleep calculator
-    </h2>
+    </h6>
   </div>
 </template>
 
