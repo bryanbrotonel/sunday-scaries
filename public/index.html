@@ -4,8 +4,46 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="<%= BASE_URL %>favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="<%= BASE_URL %>favicon.svg" />
+    <link rel="shortcut icon" href="<%= BASE_URL %>favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= BASE_URL %>apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Sunday Scaries" />
+    <link rel="manifest" href="<%= BASE_URL %>site.webmanifest" />
+
+    <!-- Page Title -->
     <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <!-- Description (SEO) -->
+    <meta name="description" content="Sunday Scaries: A procrastinator’s sleep calculator" />
+
+    <!-- Keywords (SEO) -->
+    <meta name="keywords" content="Sunday Scaries: " />
+
+    <!-- Author -->
+    <meta name="author" content="Bryan Brotonel" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#210078" />
+
+    <!-- Open Graph (Social Media Sharing) -->
+    <meta property="og:title" content="Sunday Scaries" />
+    <meta property="og:description" content="Sunday Scaries: A procrastinator’s sleep calculator" />
+    <meta property="og:image" content="<%= BASE_URL %>favicon-96x96.png" />
+    <meta property="og:url" content="https://bryanbrotonel.vercel.app" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sunday Scaries" />
+    <meta name="twitter:description" content="Sunday Scaries: A procrastinator’s sleep calculator" />
+    <meta name="twitter:image" content="<%= BASE_URL %>favicon-96x96.png" />
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
+        
   </head>
   <body>
     <noscript>

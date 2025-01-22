@@ -3,7 +3,9 @@
     <div
       class="flex flex-grow flex-col mx-auto lg:mx-0 lg:flex-row gap-5 lg:justify-center p-4 lg:p-0 lg:mt-32"
     >
-      <div class="hidden lg:block xl:mb-auto sticky max-w-lg top-0 space-y-8 lg:top-32">
+      <div
+        class="hidden lg:block xl:mb-auto sticky max-w-lg top-0 space-y-8 lg:top-32"
+      >
         <SleepHeader />
         <SleepInfo />
       </div>
@@ -45,6 +47,9 @@ import SleepResults from './components/SleepResults/SleepResults.vue';
 
 export default {
   name: 'App',
+  mounted() {
+    document.title = 'Sunday Scaries';
+  },
   components: {
     SleepHeader,
     SleepInfo,
